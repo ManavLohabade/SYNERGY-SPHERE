@@ -9,7 +9,7 @@ app.post("/verify-wallet", async (req, res) => {
     // Verify the wallet signature here
     try {
         const isValid = await verifySignature(address, signedMessage, originalMessage);
-        if (isValid) {
+        if (isValid) {  
             res.json({ message: "Wallet verified successfully" });
         } else {
             res.status(400).json({ error: "Invalid signature" });
@@ -22,7 +22,8 @@ app.post("/verify-wallet", async (req, res) => {
 
 // Add your custom `verifySignature` function here (specific to Aptos SDK)
 const verifySignature = async (address: string, signedMessage: string, originalMessage: string) => {
-    return true; 
+    // Use Aptos SDK or a library for signature verification
+    return true; // Replace with actual verification logic
 };
 
 app.listen(3000, () => console.log("Server running on http://localhost:3000"));
