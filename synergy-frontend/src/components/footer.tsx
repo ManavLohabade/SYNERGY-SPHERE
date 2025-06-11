@@ -1,12 +1,10 @@
-import React from 'react';
-
 export default function Footer() {
   return (
     <footer className="border-t border-pink-900/30 bg-black text-white p-8">
       <div className="max-w-7xl mx-auto">
         {/* Brand Section */}
         <div className="flex items-center justify-center mb-6">
-          <img 
+        <img 
             src="/SynergyLogo.png" 
             alt="Synergy Logo" 
             className="h-8 w-auto"

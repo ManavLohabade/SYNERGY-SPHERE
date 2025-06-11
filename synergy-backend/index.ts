@@ -1,9 +1,9 @@
-import express from "express";
+import express, { Request, Response } from "express";
 
 const app = express();
 app.use(express.json());
 
-app.post("/verify-wallet", async (req, res) => {
+app.post("/verify-wallet", async (req: Request, res: Response) => {
     const { address, signedMessage, originalMessage } = req.body;
 
     // Verify the wallet signature here
@@ -21,7 +21,7 @@ app.post("/verify-wallet", async (req, res) => {
 });
 
 // Add your custom `verifySignature` function here (specific to Aptos SDK)
-const verifySignature = async (address: string, signedMessage: string, originalMessage: string) => {
+const verifySignature = async (address: string, signedMessage: string, originalMessage: string): Promise<boolean> => {
     // Use Aptos SDK or a library for signature verification
     return true; // Replace with actual verification logic
 };
