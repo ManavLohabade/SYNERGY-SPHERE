@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@aptos-labs/ts-sdk": "^2.0.1"
+  }
+}

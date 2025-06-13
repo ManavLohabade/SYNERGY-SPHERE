@@ -7,7 +7,7 @@ authors = []
 synergy="_"
 
 [dev-addresses]
-synergy="0x602690533d07631c58b55d18acc9354da5360977e65c16466de84362c22817a3"
+synergy="0xaaaa9f3a899dcf058c07697201d2a1bb60fd3da3409f9934f6aab3bcada61a38"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-framework.git"
@@ -17,4 +17,4 @@ subdir = "aptos-framework"
 [dev-dependencies]
 
 
-#0x640ab888e41dfe3675cfac8fbb663ea8bd35390cb2d12ccba46fbddb89f74122
+#0xaaaa9f3a899dcf058c07697201d2a1bb60fd3da3409f9934f6aab3bcada61a38
