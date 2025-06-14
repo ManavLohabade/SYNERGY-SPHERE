@@ -4,13 +4,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         {/* Brand Section */}
         <div className="flex items-center justify-center mb-6">
-        <img 
+          <img 
             src="/SynergyLogo.png" 
             alt="Synergy Logo" 
             className="h-8 w-auto"
           />
           <span className="ml-3 text-xl font-bold bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
-            Synergy-Sphere
+          Synergy-Sphere
           </span>
         </div>
 
