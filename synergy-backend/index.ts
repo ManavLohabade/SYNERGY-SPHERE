@@ -22,10 +22,7 @@ app.post("/verify-wallet", async (req, res) => {
 
 // Add your custom `verifySignature` function here (specific to Aptos SDK)
 const verifySignature = async (address: string, signedMessage: string, originalMessage: string) => {
-
-
     // Use Aptos SDK or a library for signature verification
-    
     return true; // Replace with actual verification logic
 };
 
