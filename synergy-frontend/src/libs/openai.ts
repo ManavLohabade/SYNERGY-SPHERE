@@ -6,7 +6,7 @@ if (!import.meta.env.VITE_OPENAI_API_KEY) {
 
 const openai = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true // Only if you're calling OpenAI directly from the browser
+  dangerouslyAllowBrowser: true 
 });
 
 export const generateImage = async (prompt: string): Promise<string> => {

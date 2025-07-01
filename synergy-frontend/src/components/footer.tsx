@@ -6,11 +6,11 @@ export default function Footer() {
         <div className="flex items-center justify-center mb-6">
           <img 
             src="/SynergyLogo.png" 
-            alt="Synergy Logo" 
+            alt="SynergyLogo.png" 
             className="h-8 w-auto"
           />
           <span className="ml-3 text-xl font-bold bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
-          Synergy-Sphere
+            Synergy-Sphere
           </span>
         </div>
 

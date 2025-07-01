@@ -1,4 +1,4 @@
-module apticity::nft_mint {
+module synergy::nft_mint {
     use std::vector;
     use aptos_framework::account;
     use aptos_framework::event;
@@ -73,7 +73,7 @@ module apticity::nft_mint {
         minter: &signer, 
         metadata: vector<u8>
     ) acquires NFTCollection, MintEvents {
-        let collection = borrow_global_mut<NFTCollection>(@apticity);
+        let collection = borrow_global_mut<NFTCollection>(@synergy);
         let minter_addr = std::signer::address_of(minter);
         
         // Validate mint conditions
@@ -94,7 +94,7 @@ module apticity::nft_mint {
         // Store token and emit event
         simple_map::add(&mut collection.token_data, collection.mint_count, new_token);
         
-        let events = borrow_global_mut<MintEvents>(@apticity);
+        let events = borrow_global_mut<MintEvents>(@synergy);
         event::emit_event(&mut events.mint_started_events, MintStartedEvent {
             token_id: collection.mint_count,
             minter: minter_addr,
@@ -108,7 +108,7 @@ module apticity::nft_mint {
     public entry fun complete_mint(
         token_id: u64
     ) acquires NFTCollection, MintEvents {
-        let collection = borrow_global_mut<NFTCollection>(@apticity);
+        let collection = borrow_global_mut<NFTCollection>(@synergy);
         
         assert!(simple_map::contains_key(&collection.token_data, &token_id), ERROR_INVALID_TOKEN_ID);
         let token = simple_map::borrow_mut(&mut collection.token_data, &token_id);
@@ -120,7 +120,7 @@ module apticity::nft_mint {
         token.mint_status.is_locked = true;
 
         // Emit completion event
-        let events = borrow_global_mut<MintEvents>(@apticity);
+        let events = borrow_global_mut<MintEvents>(@synergy);
         event::emit_event(&mut events.mint_completed_events, MintCompletedEvent {
             token_id,
             owner: token.owner
@@ -130,20 +130,20 @@ module apticity::nft_mint {
     // ======== View Functions ========
     #[view]
     public fun get_token_data(token_id: u64): TokenData acquires NFTCollection {
-        let collection = borrow_global<NFTCollection>(@apticity);
+        let collection = borrow_global<NFTCollection>(@synergy);
         assert!(simple_map::contains_key(&collection.token_data, &token_id), ERROR_INVALID_TOKEN_ID);
         *simple_map::borrow(&collection.token_data, &token_id)
     }
 
     #[view]
     public fun get_collection_info(): (u64, u64) acquires NFTCollection {
-        let collection = borrow_global<NFTCollection>(@apticity);
+        let collection = borrow_global<NFTCollection>(@synergy);
         (collection.mint_count, MAX_SUPPLY)
     }
 
     #[view]
     public fun get_minted_tokens(): vector<TokenData> acquires NFTCollection {
-        let collection = borrow_global<NFTCollection>(@apticity);
+        let collection = borrow_global<NFTCollection>(@synergy);
         let tokens = vector::empty<TokenData>();
         let i = 0;
         while (i < collection.mint_count) {
