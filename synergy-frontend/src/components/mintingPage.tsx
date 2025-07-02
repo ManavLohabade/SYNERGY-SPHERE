@@ -70,7 +70,7 @@ export default function MintingPage() {
     try {
       await signAndSubmitTransaction({
         type: "entry_function_payload",
-        function: `${MODULE_ADDRESS}::apticity::mint_nft`,
+        function: `${MODULE_ADDRESS}::synergy::mint_nft`,
         type_arguments: [],
         arguments: [metadata.name, metadata.description, metadata.image]
       });
