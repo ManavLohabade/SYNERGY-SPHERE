@@ -5,7 +5,7 @@ import MintProgressPopup from "./mintProgressPopUp";
 import { NFTService } from "../services/nftService";
 import { AccountAddress } from "@aptos-labs/ts-sdk";
 
-const MODULE_ADDRESS = "0x640ab888e41dfe3675cfac8fbb663ea8bd35390cb2d12ccba46fbddb89f74122";
+const MODULE_ADDRESS = "0x7d71a1ae719824a70d22beb7deabeb7c0b6223316f27775c2f0f2b94b8e6965f";
 
 interface NFTMetadata {
   name: string;
@@ -70,9 +70,13 @@ export default function MintingPage() {
     try {
       await signAndSubmitTransaction({
         type: "entry_function_payload",
-        function: `${MODULE_ADDRESS}::synergy::mint_nft`,
+        function: `${MODULE_ADDRESS}::nft_mint::initiate_mint`,
         type_arguments: [],
-        arguments: [metadata.name, metadata.description, metadata.image]
+        arguments: [Array.from(new TextEncoder().encode(JSON.stringify({
+          name: metadata.name,
+          description: metadata.description,
+          image: metadata.image
+        })))]
       });
       
       setCurrentStep(2);

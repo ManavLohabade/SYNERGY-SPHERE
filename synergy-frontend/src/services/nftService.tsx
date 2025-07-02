@@ -1,6 +1,6 @@
 import { Aptos, AptosConfig, Network } from "@aptos-labs/ts-sdk";
 
-const MODULE_ADDRESS = "0x640ab888e41dfe3675cfac8fbb663ea8bd35390cb2d12ccba46fbddb89f74122";
+const MODULE_ADDRESS = "0x7d71a1ae719824a70d22beb7deabeb7c0b6223316f27775c2f0f2b94b8e6965f";
 
 const config = new AptosConfig({ network: Network.TESTNET });
 const aptos = new Aptos(config);
@@ -20,7 +20,7 @@ export class NFTService {
     try {
       const response = await aptos.view({
         payload: {
-          function: `${MODULE_ADDRESS}::synergy::get_token_data`,
+          function: `${MODULE_ADDRESS}::nft_mint::get_token_data`,
           typeArguments: [],
           functionArguments: [tokenId], // Changed from arguments to functionArguments
         },

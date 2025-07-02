@@ -4,10 +4,10 @@ version = "1.0.0"
 authors = []
 
 [addresses]
-synergy="_"
+synergy = "0x7d71a1ae719824a70d22beb7deabeb7c0b6223316f27775c2f0f2b94b8e6965f"
+std = "0x1"
 
 [dev-addresses]
-synergy="0xaaaa9f3a899dcf058c07697201d2a1bb60fd3da3409f9934f6aab3bcada61a38"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-framework.git"
@@ -15,6 +15,3 @@ rev = "mainnet"
 subdir = "aptos-framework"
 
 [dev-dependencies]
-
-
-#0xaaaa9f3a899dcf058c07697201d2a1bb60fd3da3409f9934f6aab3bcada61a38
