@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useWallet } from "./walletProvider";
 import MintProgressPopup from "./mintProgressPopUp";
-import { NFTService } from "../services/nftService";
-import { AccountAddress } from "@aptos-labs/ts-sdk";
 
 const MODULE_ADDRESS = "0x7d71a1ae719824a70d22beb7deabeb7c0b6223316f27775c2f0f2b94b8e6965f";
 
@@ -69,7 +67,6 @@ export default function MintingPage() {
 
     try {
       await signAndSubmitTransaction({
-        type: "entry_function_payload",
         function: `${MODULE_ADDRESS}::nft_mint::initiate_mint`,
         type_arguments: [],
         arguments: [Array.from(new TextEncoder().encode(JSON.stringify({
@@ -77,7 +74,7 @@ export default function MintingPage() {
           description: metadata.description,
           image: metadata.image
         })))]
-      });
+      } as any);
       
       setCurrentStep(2);
       setCurrentStep(3);

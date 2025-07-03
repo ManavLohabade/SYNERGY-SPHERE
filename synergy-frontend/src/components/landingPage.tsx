@@ -151,7 +151,6 @@ export default function LandingPage() {
                   <button>
                     <GenerateButton
                       prompt={prompt}
-                      onPromptChange={setPrompt}
                       onImageGenerated={(imageUrl: string) => {
                         setGeneratedImage(imageUrl);
                         setIsDemoImage(checkIfDemoImage(imageUrl));

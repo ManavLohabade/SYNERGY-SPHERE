@@ -6,16 +6,13 @@ import { generateImage as generateOpenAIImage } from '../libs/openai';
 interface GenerateButtonProps {
   prompt: string;
   onImageGenerated: (imageUrl: string) => void;
-  onPromptChange: (newPrompt: string) => void;
 }
 
 export const GenerateButton: React.FC<GenerateButtonProps> = ({
   prompt,
   onImageGenerated,
-  onPromptChange,
 }) => {
-  const { walletAddress, connectWallet } = useWallet();
-  const [showConnectPrompt, setShowConnectPrompt] = useState(false);
+  const { walletAddress } = useWallet();
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,7 +20,7 @@ export const GenerateButton: React.FC<GenerateButtonProps> = ({
 
   const handleGenerateClick = async () => {
     if (!walletAddress) {
-      setShowConnectPrompt(true);
+      setError("Please connect your wallet first");
       return;
     }
 
